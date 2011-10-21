@@ -4,6 +4,16 @@ $ git add <file>
 $ git commit -m "..."
 $ git push
 
+
+Initialize local
+================
+$ mkdir howTo126
+$ cd howTo126
+$ git init
+$ git remote add origin git@github.com:kingshaw/howTo126.git
+$ git fetch
+$ git checkout master
+
 Initial
 =======
 
