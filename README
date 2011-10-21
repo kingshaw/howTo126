@@ -1,1 +1,15 @@
-read me first ...
+$ git init
+
+$ git add README
+$ git commit -m "init" 
+
+$ git remote add origin git@github.com:kingshaw/howTo126.git
+$ git push -u origin master
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 217 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:kingshaw/howTo126.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+
+
