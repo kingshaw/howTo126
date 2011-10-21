@@ -1,0 +1,5 @@
+##
+## To tar a directory (with path leading to it), with the .git sub-directory...
+##
+
+$> tar zcvf gps.tgz hardware/broadcom/gps --exclude=.git

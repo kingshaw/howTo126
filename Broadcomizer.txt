@@ -1,0 +1,15 @@
+# Create a subtree for Broadcom
+
+$ cd ~/sandbox
+$ make
+
+$ cd ~/private-git/Broadcomizer
+$ make
+
+// out-dir is the directory, ready for Broadcom
+// To verify the build
+$ cd out-dir
+$ make clean-wlan
+$ make wlan
+
+

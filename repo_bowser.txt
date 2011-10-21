@@ -1,0 +1,89 @@
+##
+## Preparation
+##
+
+$ sudo add-apt-repository "deb http://archive.canonical.com/ lucid partner"
+$ sudo apt-get update
+$ sudo apt-get install sun-java6-jdk
+
+$ sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev libgl1-mesa-dev
+$ sudo apt-get install gcc-multilib g++-multilib libc6-i386 libc6-dev-i386
+
+##
+
+$> ssh-keygen -t rsa -C "kings@lab126.com"
+$> gedit .ssh/config
+$> ssh -p 9418 gerrit2.labcollab.net
+$> git config --global user.name "king shaw"
+$> git config --global user.email kings@lab126.com
+
+$> cd ~/sandbox
+#$> repo init -u ssh://gerrit2.labcollab.net:9418/bowser/labmanifest.git -b Jem_labdev
+$> repo init -u ssh://gerrit2.labcollab.net:9418/bowser/labmanifest.git -b lab_dev
+# optionally, add: --repo-url=git://git.omapzoom.org/tools/repo
+
+$> repo sync -j8
+
+# ... 3 hours later ...
+
+$> ls
+kernel  labscripts  Makefile  mydroid  tools  u-boot  x-loader
+
+##
+## Branching "in" (i.e., merge) before push. Just one of many possible workflows.
+##
+
+$> git lab126/Jem_labdev	# Move back to the "no-name" branch. Why this is not named as the usual "master"?
+$> git merge <br_new>		# Merge from <br_new> to this "no-name" branch.
+$> git push lab126 HEAD:refs/for/Jem_labdev
+
+##
+## back to an older version
+##
+
+$> git checkout a1b0c			# Back to this revision
+$> git checkout lab126/Jem_labdev	# Back to the HEAD
+
+##
+##
+##
+
+$> git log -1		# what ID are we on?
+$> git status		# what branch are we on?
+
+
+
+##
+## patching
+##
+
+$> git apply --stat my.patch	# to see what's in it
+$> git apply --check my.patch	# to test the patch before really applying it
+
+$> git am s--signoff < my.patch			# apply the patch
+OR
+$> git apply --reject --whitespace my.path	# apply all that can be applied. Put rejects in *.rej files.
+
+
+##
+## cherry picking ...
+##
+
+# an example ...
+git fetch ssh://kings@gerrit2.labcollab.net:9418/bowser/kernel/android-2.6.35 refs/changes/10/110/1 && git cherry-pick FETCH_HEAD
+
+##
+## merge, when there is a conflict
+##
+
+$> git mergetool
+
+##
+## to re-init an existing repo
+##
+
+$> repo init -b <branch>		# E.g., labdev_otter, labdev_cape, labdev_congo; lab_dev, jem_dev, tate_dev
+$> repo sync
+
+
+

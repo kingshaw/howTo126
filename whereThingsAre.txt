@@ -1,0 +1,3 @@
+~/mydroid/hardware/broadcom/wlan		# Broadcom wifi host driver and firmware?
+
+

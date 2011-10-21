@@ -1,0 +1,3 @@
+# as root ..
+$> /etc/init.d/ssh restart
+

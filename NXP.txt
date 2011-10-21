@@ -1,0 +1,10 @@
+OMAP44XX SDP # ibus 3 64                                                                          
+Setting bus[3] to Speed[100]: PASS                                                                
+OMAP44XX SDP # i2cw 28 5 f9 4  0 c3 e5                                                            
+write to addr 0x28: 6 bytes                                                                       
+done                                                                                              
+OMAP44XX SDP # i2cr 28 4                                                                          
+read from addr 0x28: 4 bytes                                                                      
+done                                                                                              
+3 e6 17 a7                                                                                        
+

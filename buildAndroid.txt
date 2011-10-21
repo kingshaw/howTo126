@@ -1,0 +1,43 @@
+##
+## Top level build
+##
+
+$ cd <work_dir>
+$ make
+
+##
+## Build Android sub modules
+##
+
+$ cd <work_dir>/mydroid
+$ source build/envsetup.sh
+$ cd hardware/broadcom/bluetooth
+$ mm
+
+
+##
+## Build config for mydroid
+##
+
+Check: 
+	mydroid/build/core/user_tags.mk
+	mydroid/build/target/product/core.mk
+
+	mydroid/device/amazon/bowser
+
+##
+## Build results
+##
+
+mydroid/out/
+
+	host/
+		linux-x86/bin/		# adb, ...
+
+	target/product/bowser/
+		system/
+			app/			# *.apk
+			etc/			# linux etc configs
+			bin/			# linux apps
+
+	

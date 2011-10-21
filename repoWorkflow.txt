@@ -1,0 +1,60 @@
+***
+*** Workflow
+***
+
+##
+## Branching out before development
+##
+
+		# NOTE:
+		# Without branching out first, this sequence can create problems
+		# $> repo sync
+		# $> ... do stuff ...
+		# $> git add .
+		# $> git commit .
+		# $> git push ....
+		# $> repo sync
+		# ... local commits are discarded!!!
+		# ... Need to go through the cherry-picking process to get them back. (See below)
+		# So, if you are in this case => don't "repo sync" until the changes are merged in repo.
+
+$> git branch <br_new>		# create a new branch br_new	
+$> git branch -a			# to see what's there
+$> git checkout <br_new>	# switch work dir to branch br_new (or $> git checkout -b <br_new>, to create/switch to <br_new>)
+
+... do stuff ...
+
+##
+## Local commit
+##
+
+$> git status
+$> git add .				# or $> git rm <file>, or $> git rm -r <dir>
+$> git status
+$> git commit .
+
+##
+## Push changes to the server (from the <br_new> branch)
+##
+
+$> git push lab126 HEAD:refs/for/lab_dev
+
+#WAS: $> git push lab126 HEAD:refs/for/Jem_labdev
+
+##
+## Back to main branch
+##
+
+$> git checkout lab126/lab_dev
+
+
+##
+## some safer commands
+##
+
+$> git gc					# run garbage collection
+$> git repack				# in case you have pack/unpack errors
+$> git diff <br1>..<br2>	# diff between two branches. the ".." is necessary.
+$> repo sync .				# sync this git/dir only 
+
+

@@ -1,0 +1,65 @@
+HOST					TARGET
+===========================		==================================
+**
+** Connect to console
+**
+
+$> minicom
+# set to 115200-8N1, /dev/ttyUSB0
+
+
+**
+** To flash images to TARGET ...
+**					# Hit any key to stop U-Boot from autobooting to kernel ...
+					> fastboot
+
+$> cd ~~/images/
+$> ./image_flash.sh all
+# ... or a subset of images
+
+$> ./fastboot reboot
+# 'fastboot' and 'adb' are also in
+# ~/mydroid/out/host/linux-x86/bin
+
+
+** 
+** Connect to TARGET using adb
+**
+
+$> cd ~/tests
+$> adb shell
+#
+
+**
+** Loopback mounting of images
+**
+
+$> cd ~/tests/loopback-mount
+$> ln -s ~/sandbox/images/system.img .
+$> simg2img  system.img system.img.raw
+$> mkdir mnt-system
+$> sudo mount -t ext4 -o loop system.img.raw mnt-system
+
+**
+** building the images
+**
+
+$> export PLATFORM=jem		# default is "bowser".
+$> make clean
+$> make
+
+**
+** target file system that goes into the images
+**
+
+# located in ~/sandbox/mydroid/out/target/product/bowser/
+
+
+**
+** IDME. Needed for every new eMMC card.
+**
+
+(uboot)> idme bootmode 1
+
+
+

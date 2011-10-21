@@ -1,0 +1,35 @@
+##
+## See where all the (user space) printf's go
+##
+
+$ adb logcat
+
+
+##
+## adb over IP network
+##
+
+TARGET						HOST
+============					==================
+
+// From: http://processors.wiki.ti.com/index.php/TI-Android-GingerBread-2.3-DevKit-1.0_UserGuide
+
+$ netcfg
+# eth0 must be there, with an IP.
+# e.g., "etho0 UP 192.168.1.2"
+
+$ setprop service.adb.tcp.port 5555
+$ stop adbd
+$ start adbd
+
+						$ export ADBHOST=192.168.1.2
+						# "export -n ADBHOST" to undo ...
+
+						$ adb kill-server
+						$ adb start-server
+						$ adb devices
+						# Target shown as an emulator, e.g., "emulator-5554"
+
+						$ adb shell
+						# ... connected to the target
+

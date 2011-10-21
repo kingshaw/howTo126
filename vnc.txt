@@ -1,0 +1,25 @@
+## 
+## download vnc-server
+##
+
+Download androidvncserver from http://code.google.com/p/android-vnc-server.
+chmod a+x, adb push to target.
+
+
+##
+## running it ...
+##
+
+TARGET								HOST
+============							==================
+								// connect target through USB
+
+$>./androidvncserver -t /dev/input/event1 -k /dev/input/event2
+// listening on TCP port 5901
+
+								$> adb forward tcp:5901 tcp:5901
+								$> xvncviewer
+								// set server to "localhost:5901"
+ 							
+
+

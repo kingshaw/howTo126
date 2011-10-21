@@ -1,0 +1,41 @@
+##
+## AP setup
+##
+
+ssid: brap
+IP: 192.168.1.1
+DHCP: off (be careful !)
+
+##
+## test controller setup
+##
+
+$(root)> ifconfig eth2:0 192.168.1.100
+
+##
+## DUT setup
+##
+
+$> cd /system/bin
+$> ./load_bcm4329.sh
+
+$> ifconfig eth0 192.168.1.2
+$> wl mpc 0
+$> wl isup
+1
+
+$> wl scan
+$> wl scanresults
+
+$> wl join brap
+
+# Must be root, for now ...
+# UDP
+DUT #> iperf -s -u -i 1
+HOST > iperf -c 192.168.1.2 -b 1m -i 1
+
+# TCP
+DUT #> iperf -s -i 1
+HOST > iperf -c 192.168.1.2 -i 1
+
+
